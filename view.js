@@ -1,5 +1,15 @@
  var canvas = document.getElementById('myCanvas');
 
+ function pausecomp(millis) {
+ 	var date = new Date();
+ 	var curDate = null;
+
+ 	do {
+ 		curDate = new Date();
+ 	}
+ 	while (curDate - date < millis);
+ }
+
  function wrapText(context, text, x, y, maxWidth, lineHeight) {
  	var words = text.split(' ');
  	var line = '';
@@ -144,11 +154,11 @@
  		var y = 60;
  		tr.c.font = '16pt Calibri';
  		tr.c.fillStyle = '#333';
- 		wrapText(tr.c, textParam, canvas.width/2, y, maxWidth, lineHeight);
+ 		wrapText(tr.c, textParam, canvas.width / 2, y, maxWidth, lineHeight);
  	} else {
  		tr.c.clearRect(0, 0, canvas.width, canvas.height);
- 		tr.renderTree(new Point(canvas.width/2, canvas.height / 5));
- 		text = '';
+ 		tr.renderTree(new Point(canvas.width / 2, canvas.height / 5));
+ 		pausecomp(1000);
  	}
 
  }
